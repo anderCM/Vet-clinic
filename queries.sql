@@ -45,7 +45,12 @@ UPDATE animals
 					ELSE
 						'pokemon'
 					END;
+SELECT species FROM animals;
+
 COMMIT;
+
+SELECT species from animals;
+
 
 /* Inside a transaction update the animals table by setting the species column to unspecified. Verify that change was made.
 	Then roll back the change and verify that the species columns went back to the state before the transaction */
