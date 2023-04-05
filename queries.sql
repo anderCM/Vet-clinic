@@ -48,7 +48,6 @@ UPDATE animals
 SELECT species FROM animals;
 
 COMMIT;
-
 SELECT species from animals;
 
 
@@ -57,12 +56,10 @@ SELECT species from animals;
 BEGIN;
 SAVEPOINT trs_upd_spec_unde;
 UPDATE animals SET species = 'unspecified';
-
 SELECT species FROM animals;
 
 BEGIN;
 ROLLBACK TO trs_upd_spec_unde;
-
 SELECT species FROM animals;
 
 
