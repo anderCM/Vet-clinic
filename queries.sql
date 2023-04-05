@@ -47,6 +47,16 @@ UPDATE animals
 					END;
 COMMIT;
 
+/* Inside a transaction update the animals table by setting the species column to unspecified. Verify that change was made.
+	Then roll back the change and verify that the species columns went back to the state before the transaction */
+BEGIN;
+SAVEPOINT trs_upd_spec_unde;
+UPDATE animals SET species = 'unspecified';
+
+BEGIN;
+ROLLBACK TO trs_upd_spec_unde;
+
+
 /* Now, take a deep breath and... Inside a transaction delete all records in the animals table, then roll back the transaction.
 	After the rollback verify if all records in the animals table still exists. After that, you can start breathing as usual ;) */
 START TRANSACTION;
