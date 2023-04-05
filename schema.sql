@@ -6,3 +6,6 @@ CREATE TABLE animals (
 	neutered boolean DEFAULT false,
 	weight_kg decimal NOT NULL
 );
+
+ALTER TABLE animals 
+	ADD COLUMN species VARCHAR(50) NOT NULL DEFAULT 'unspecified';
