@@ -58,8 +58,12 @@ BEGIN;
 SAVEPOINT trs_upd_spec_unde;
 UPDATE animals SET species = 'unspecified';
 
+SELECT species FROM animals;
+
 BEGIN;
 ROLLBACK TO trs_upd_spec_unde;
+
+SELECT species FROM animals;
 
 
 /* Now, take a deep breath and... Inside a transaction delete all records in the animals table, then roll back the transaction.
