@@ -33,3 +33,73 @@ SELECT * FROM animals
 SELECT * FROM animals
 	WHERE weight_kg >= 10.4
 		AND weight_kg <= 17.3;
+
+/* 	Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.
+	Update the animals table by setting the species column to pokemon for all animals that don't have species already set.
+	Commit the transaction. */
+BEGIN;		
+UPDATE animals 
+	SET species = CASE
+					WHEN name LIKE '%mon'
+						THEN 'digimon'
+					ELSE
+						'pokemon'
+					END;
+COMMIT;
+
+/* Now, take a deep breath and... Inside a transaction delete all records in the animals table, then roll back the transaction.
+	After the rollback verify if all records in the animals table still exists. After that, you can start breathing as usual ;) */
+START TRANSACTION;
+SAVEPOINT trs;
+DELETE FROM animals;
+
+START TRANSACTION;
+ROLLBACK TO trs;
+COMMIT;
+
+/* Inside a transaction:
+		Delete all animals born after Jan 1st, 2022.
+		Create a savepoint for the transaction.
+		Update all animals' weight to be their weight multiplied by -1.
+		Rollback to the savepoint
+		Update all animals' weights that are negative to be their weight multiplied by -1.
+		Commit transaction */
+
+BEGIN;
+DELETE FROM animals
+	WHERE date_of_birth > '2022-01-01';
+SAVEPOINT trs_del_anim_jan01;
+UPDATE animals
+	SET weight_kg = weight_kg * -1;
+ROLLBACK TO trs_del_anim_jan01;
+UPDATE animals
+	SET weight_kg = weight_kg * -1
+	WHERE
+		weight_kg < 0;
+COMMIT;
+
+/* How many animals are there? */
+SELECT COUNT(id) total_animals FROM animals;
+
+/* How many animals have never tried to escape? */
+SELECT COUNT(id) animals_no_escape FROM animals
+	WHERE escape_attempts = 0;
+
+/* What is the average weight of animals? */
+SELECT ROUND(AVG(weight_kg), 2) average_weight FROM animals;
+
+/* Who escapes the most, neutered or not neutered animals? */
+SELECT COUNT(id) total, neutered FROM animals
+	GROUP BY neutered
+	ORDER BY total DESC
+	LIMIT 1;
+
+/* What is the minimum and maximum weight of each type of animal? */
+SELECT species, MAX(weight_kg) max_weight FROM animals
+	GROUP BY species;
+
+/* What is the average number of escape attempts per animal type of those born between 1990 and 2000? */
+SELECT species, AVG(escape_attempts) average_escape FROM animals
+	WHERE date_part('year', date_of_birth) >= '1990'
+	AND date_part('year', date_of_birth) <= '2000'
+	GROUP BY species;
