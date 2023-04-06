@@ -118,8 +118,6 @@ That's it! Congratulations, you have created your database and connected to it. 
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
-
 👤 **Anderson Canales Medina**
 
 - GitHub: [@githubhandle](https://github.com/anderCM)
@@ -153,15 +151,11 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-Give a start if you like this project! ⭐️
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-> Give credit to everyone who inspired your codebase.
 
 I would like to thank to my team
 
