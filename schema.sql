@@ -1,11 +1,30 @@
 CREATE TABLE animals (
-	id integer PRIMARY KEY,
-	name varchar(50) NOT NULL,
+	id INTEGER PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
 	date_of_birth DATE NOT NULL,
-	escape_attempts integer DEFAULT 0,
-	neutered boolean DEFAULT false,
-	weight_kg decimal NOT NULL
+	escape_attempts INTEGER DEFAULT 0,
+	neutered BOOLEAN DEFAULT false,
+	weight_kg DECIMAL NOT NULL
 );
 
 ALTER TABLE animals 
 	ADD COLUMN species VARCHAR(50) NOT NULL DEFAULT 'unspecified';
+
+CREATE TABLE owners(
+	id SERIAL PRIMARY KEY,
+	fullname VARCHAR(50) NOT NULL,
+	age INTEGER DEFAULT 1
+);
+
+CREATE TABLE species(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(20)
+);
+
+ALTER TABLE animals ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY;
+
+ALTER TABLE animals DROP COLUMN species;
+
+ALTER TABLE animals
+	ADD COLUMN species_id INTEGER REFERENCES species(id),
+	ADD COLUMN owner_id INTEGER REFERENCES owners(id);
