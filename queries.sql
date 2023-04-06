@@ -217,7 +217,11 @@ WHERE vis.date_of_visit = (
 );
 
 /* How many visits were with a vet that did not specialize in that animal's species */
-
+SELECT COUNT(anm.id) visits_no_specialized FROM animals anm
+JOIN visits vis ON vis.animal_id = anm.id
+JOIN vets vts ON vts.id = vis.vet_id
+LEFT JOIN specializations spcz ON spcz.vet_id = vts.id
+WHERE spcz.vet_id IS NULL
 
 
 /* What specialty should Maisy Smith consider getting? Look for the species she gets the most */
