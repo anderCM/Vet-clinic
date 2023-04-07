@@ -43,3 +43,10 @@ CREATE TABLE visits(
 	FOREIGN KEY (animal_id) REFERENCES animals(id),
 	FOREIGN KEY (vet_id) REFERENCES vets(id)
 );
+
+CREATE TABLE vets(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	age INTEGER NOT NULL,
+	date_of_graduation DATE
+);
