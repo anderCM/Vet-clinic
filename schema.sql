@@ -50,3 +50,5 @@ CREATE TABLE vets(
 	age INTEGER NOT NULL,
 	date_of_graduation DATE
 );
+
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);

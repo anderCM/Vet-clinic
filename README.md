@@ -123,6 +123,15 @@ That's it! Congratulations, you have created your database and connected to it. 
 - GitHub: [@githubhandle](https://github.com/anderCM)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/andersoncanales/)
 
+👤 **Jakaria**
+
+- GitHub: [@githubhandle](https://github.com/JakariaJishan)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/jakariajishan/)
+
+👤 **TUMBU BARTHOLOMEW ELAD**
+GitHub: [@githubhandle](https://github.com/elad237)
+- Twitter: [@twitterhandle](https://twitter.com/Elad59380989)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/tumbu-elad-896ab2183/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
