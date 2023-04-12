@@ -45,3 +45,9 @@ CREATE TABLE treatments (
   name	VARCHAR(100),
   PRIMARY KEY (id)
 );
+
+CREATE TABLE medical_history_treatment(
+    medical_history_id INTEGER REFERENCES medical_histories(id),
+    treatment_id INTEGER REFERENCES treatments(id),
+    PRIMARY KEY (medical_history_id, treatment_id)
+);
