@@ -30,3 +30,18 @@ CREATE TABLE invoices(
 	payed_at TIMESTAMP,
 	medical_history_id INTEGER REFERENCES medical_histories(id)
 );
+
+CREATE TABLE medical_histories (
+		id INT GENERATED ALWAYS AS IDENTITY,
+    admitted_at TIMESTAMP,
+    patient_id INT REFERENCES patients(id),
+    status VARCHAR(100),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE treatments (
+	id INT GENERATED ALWAYS AS IDENTITY,
+  type	VARCHAR(100), 
+  name	VARCHAR(100),
+  PRIMARY KEY (id)
+);
