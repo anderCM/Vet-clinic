@@ -14,7 +14,7 @@ CREATE TABLE invoice_items (
   total_price       DECIMAL,
   invoice_id        INT REFERENCES invoices(id),
   treatment_id      INT REFERENCES treatments(id),
-  PRIMARY KEY(id, invoice_id, treatment_id)
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE patients(
