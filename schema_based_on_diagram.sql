@@ -24,7 +24,7 @@ CREATE TABLE patients(
 );
 
 CREATE TABLE invoices(
-	id SERIAL PERIMARY KEY,
+	id SERIAL PRIMARY KEY,
 	total_amount DECIMAL NOT NULL,
 	generated_at TIMESTAMP,
 	payed_at TIMESTAMP,
