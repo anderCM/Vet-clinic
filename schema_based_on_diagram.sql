@@ -51,3 +51,13 @@ CREATE TABLE medical_history_treatment(
     treatment_id INTEGER REFERENCES treatments(id),
     PRIMARY KEY (medical_history_id, treatment_id)
 );
+
+CREATE INDEX invoice_id ON invoice_items(invoice_id);
+CREATE INDEX treatment_id ON invoice_items(treatment_id);
+
+CREATE INDEX medical_history_id ON invoices(medical_history_id);
+
+CREATE INDEX patient_id ON medical_histories (patient_id)
+
+CREATE INDEX medical_history_id ON medical_history_treatment (medical_history_id);
+CREATE INDEX treatment_id ON medical_history_treatment (treatment_id);
