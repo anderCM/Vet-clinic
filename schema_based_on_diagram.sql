@@ -1,18 +1,9 @@
-CREATE TABLE owners(
-	id SERIAL PRIMARY KEY,
-	fullname VARCHAR(50) NOT NULL,
-	age INTEGER DEFAULT 1,
-    email VARCHAR(120)
-);
-
-CREATE TABLE animals (
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(50) NOT NULL,
-	date_of_birth DATE NOT NULL,
-	escape_attempts INTEGER DEFAULT 0,
-	neutered BOOLEAN DEFAULT false,
-	weight_kg DECIMAL NOT NULL,
-    species_id INTEGER REFERENCES species(id),
-    owner_id INTEGER REFERENCES owners(id)
-);
-
+CREATE TABLE invoice_items {
+  id                INT GENERATED ALWAYS AS IDENTITY,
+  unit_price        DECIMAL,
+  quantity          INT,
+  total_price       DECIMAL,
+  invoice_id        INT REFERENCES invoices(id),
+  treatment_id      INT REFERENCES treatments(id),
+  PRIMARY KEY(id, invoice_id, treatment_id)
+}
